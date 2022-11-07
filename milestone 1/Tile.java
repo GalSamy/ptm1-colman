@@ -102,7 +102,7 @@ public class Tile {
             if(isEmpty())
                 return null;
             // not empty! let's pick a non zero tile
-            while (!nonZero(n)){
+            while (!nonZeroTile(n)){
                 n = rand.nextInt(26);
             }
             // A = 65 and so on at the ascii table
@@ -110,9 +110,11 @@ public class Tile {
             return this.tiles[n];
         }
         public Tile getTile(char t){
+            if(t < 'A' || t>'Z')
+                return null;
             if (isEmpty())
                 return null;
-            if(!nonZero(t - 'A'))
+            if(!nonZeroTile(t - 'A'))
                 return null;
             this.tilesAmount[t - 'A']--;
             return this.tiles[t - 'A'];
@@ -125,7 +127,7 @@ public class Tile {
             return size;
         }
         public void put(Tile t){
-            if(this.size() + 1 == 98){
+            if(this.size() == 98){
                 return;
             }
             tilesAmount[t.getLetter() - 'A']++;
@@ -150,9 +152,9 @@ public class Tile {
             return true;
         }
         // check if a given tile has zero pieces of it.
-        public boolean nonZero(int tile){
+        public boolean nonZeroTile(int tile){
             // might need to change this
-            if (tilesAmount[tile] - 1 <= 0)
+            if (tilesAmount[tile] == 0)
                 return false;
             return true;
         }
