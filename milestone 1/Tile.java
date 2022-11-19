@@ -2,8 +2,17 @@ package test;
 import java.util.Random;
 import java.util.Objects;
 
+/**
+ * The type Tile.
+ */
 public class Tile {
+    /**
+     * The Letter.
+     */
     public final char letter;
+    /**
+     * The Score.
+     */
     public final int score;
     private Tile(char l, int c){
         letter = l;
@@ -22,14 +31,27 @@ public class Tile {
         return Objects.hash(letter, score);
     }
 
+    /**
+     * Gets letter.
+     *
+     * @return the letter
+     */
     public char getLetter() {
         return letter;
     }
 
+    /**
+     * Gets score.
+     *
+     * @return the score
+     */
     public int getScore() {
         return score;
     }
 
+    /**
+     * The type Bag.
+     */
     public static class Bag{
         private static Bag b = null;
         private Bag(){
@@ -87,14 +109,33 @@ public class Tile {
             tiles[25] = new Tile('Z', 10);
 
         }
+
+        /**
+         * Get bag bag.
+         *
+         * @return the bag
+         */
         public static Bag getBag(){
             if(b == null) {
                 b = new Bag();
             }
             return b;
         }
+
+        /**
+         * The Tiles amount.
+         */
         int[] tilesAmount = new int[26];
+        /**
+         * The Tiles.
+         */
         Tile[] tiles = new Tile[26];
+
+        /**
+         * Get rand tile.
+         *
+         * @return the tile
+         */
         public Tile getRand(){
             Random rand = new Random();
             int n = rand.nextInt(26);
@@ -109,6 +150,13 @@ public class Tile {
             this.tilesAmount[tiles[n].getLetter() - 'A']--;
             return this.tiles[n];
         }
+
+        /**
+         * Get tile tile.
+         *
+         * @param t the t
+         * @return the tile
+         */
         public Tile getTile(char t){
             if(t < 'A' || t>'Z')
                 return null;
@@ -119,6 +167,12 @@ public class Tile {
             this.tilesAmount[t - 'A']--;
             return this.tiles[t - 'A'];
         }
+
+        /**
+         * Size int.
+         *
+         * @return the int
+         */
         public int size(){
             int size = 0;
             for (int i = 0; i < 26; i++){
@@ -126,12 +180,24 @@ public class Tile {
             }
             return size;
         }
+
+        /**
+         * Put.
+         *
+         * @param t the t
+         */
         public void put(Tile t){
             if(this.size() == 98){
                 return;
             }
             tilesAmount[t.getLetter() - 'A']++;
         }
+
+        /**
+         * Get quantities int [ ].
+         *
+         * @return the int [ ]
+         */
         public int[] getQuantities(){
             int[] clone = new int[26];
             for (int i = 0; i < 26;i++)
@@ -140,7 +206,13 @@ public class Tile {
             }
             return clone;
         }
-        //*********************************//
+
+        /**
+         * Is empty boolean.
+         *
+         * @return the boolean
+         */
+//*********************************//
         //check if our bag is empty
         public boolean isEmpty(){
             for (int i = 0; i < this.tilesAmount.length; i++){
@@ -151,7 +223,14 @@ public class Tile {
             }
             return true;
         }
-        // check if a given tile has zero pieces of it.
+
+        /**
+         * Non zero tile boolean.
+         *
+         * @param tile the tile
+         * @return the boolean
+         */
+// check if a given tile has zero pieces of it.
         public boolean nonZeroTile(int tile){
             // might need to change this
             if (tilesAmount[tile] == 0)
