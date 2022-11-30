@@ -33,6 +33,14 @@ public class Word {
         return vertical;
     }
 
+    public String getStringedWord(){
+        String word = "";
+        for (Tile t : tiles) {
+            word = word + t.getLetter();
+        }
+        return word;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

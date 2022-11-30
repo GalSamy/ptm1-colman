@@ -69,13 +69,15 @@ public class MainTrain {
 		Word w5=new Word(ts,0,7,true);
 		Word w6=new Word(ts,7,0,false);
 		
-		if(b.boardLegal(w0) || b.boardLegal(w1) || b.boardLegal(w2) || b.boardLegal(w3) || b.boardLegal(w4) || !b.boardLegal(w5) || !b.boardLegal(w6))
+		if(b.boardLegal(w0) || b.boardLegal(w1) || b.boardLegal(w2) || b.boardLegal(w3) || b.boardLegal(w4) ||
+				!b.boardLegal(w5) ||
+				!b.boardLegal(w6))
 			System.out.println("your boardLegal function is wrong (-10)");
 		
 		for(Tile t : ts)
 			bag.put(t);
 		
-		Word horn=new Word(get("HORN"), 7, 5, false);
+	/*	Word horn=new Word(get("HORN"), 7, 5, false);
 		if(b.tryPlaceWord(horn)!=14)
 			System.out.println("problem in placeWord for 1st word (-10)");
 
@@ -95,7 +97,7 @@ public class MainTrain {
 		if(b.tryPlaceWord(bit)!=22)
 			System.out.println("problem in placeWord for 5th word (-15)");
 		
-
+ */
 	}
 
 	public static void main(String[] args) {
