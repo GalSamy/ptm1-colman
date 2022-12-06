@@ -31,6 +31,14 @@ public class Tile {
         return Objects.hash(letter, score);
     }
 
+    @Override
+    public String toString() {
+        return "Tile{" +
+                "letter=" + letter +
+                ", score=" + score +
+                '}';
+    }
+
     /**
      * Gets letter.
      *

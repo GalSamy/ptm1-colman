@@ -33,14 +33,6 @@ public class Word {
         return vertical;
     }
 
-    public String getStringedWord(){
-        String word = "";
-        for (Tile t : tiles) {
-            word = word + t.getLetter();
-        }
-        return word;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -56,4 +48,17 @@ public class Word {
         return result;
     }
 
+    @Override
+    public String toString() {
+        String tostring = "";
+        for (Tile t : tiles) {
+            if (t != null)
+                tostring += t.letter;
+            else{
+                tostring += "_";
+            }
+        }
+
+        return tostring;
+    }
 }
