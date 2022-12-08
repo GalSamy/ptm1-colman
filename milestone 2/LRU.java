@@ -2,26 +2,21 @@ package test;
 import java.util.*;
 
 public class LRU implements CacheReplacementPolicy{
-    Map<String,Integer> usedQueue;
+    LinkedHashSet<String> usedQueue;
     public LRU(){
-        usedQueue = new HashMap<String,Integer>();
+        usedQueue = new LinkedHashSet<String>();
         }
 
     public void add(String word){
-                usedQueue.put(word, 0);
-                usedQueue.forEach((k, v) -> usedQueue.put(k,usedQueue.get(k) + 1));
+                if (usedQueue.contains(word)){ // if the queue contains the word, move it to the end.
+                    usedQueue.remove(word);
+                    usedQueue.add(word);
+                }else {
+                    usedQueue.add(word);
+                }
     }
 
     public String remove() {
-
-        final int[] max = {0};
-        final String[] maxString = {""};
-        usedQueue.forEach((k,v) ->{
-            if(v >= max[0]){
-                max[0] = v;
-                maxString[0] = k;
-            }
-        });
-        return maxString[0];
+       return usedQueue.toArray(new String[1])[0]; // first word is the least recently added, get deleted.
     }
 }
