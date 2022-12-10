@@ -9,7 +9,7 @@ public class BloomFilter {
     int Length;
     MessageDigest[] hashFuncs;
     public BloomFilter(int bitLen, String...Algorithms){
-        bitArr = new BitSet(bitLen);
+        bitArr = new BitSet();
         Length = bitLen;
         hashFuncs = new MessageDigest[Algorithms.length];
         for (int i = 0; i < Algorithms.length;i++){
@@ -37,7 +37,7 @@ public class BloomFilter {
 
     public String toString(){
         String bits = new String();
-        for (int i = 0; i < Length; i++){
+        for (int i = 0; i < bitArr.length(); i++){
             if (bitArr.get(i)) {
                 bits += "1";
             }else {
@@ -52,7 +52,6 @@ public class BloomFilter {
         for (int i = 0; i < hashFuncs.length; i++){
             values[i] =new BigInteger(hashFuncs[i].digest(w.getBytes()));
             indexes[i] = Math.abs(values[i].intValue()) % Length;
-
         }
         return indexes;
     }
