@@ -136,7 +136,7 @@ public class MainTrain {
 			System.out.println("your code ran into an IOException (-10)");
 		}
 	}
-	/*
+
 	public static void testBSCH() {
 		String s1[]=writeFile("s1.txt");
 		String s2[]=writeFile("s2.txt");
@@ -154,12 +154,12 @@ public class MainTrain {
 		s.close();
 	}
 
- */
+
 	
 	public static void main(String[] args) {
 		if(testServer()) {
 			testDM();
-		//	testBSCH();
+			testBSCH();
 		}
 		System.out.println("done");
 	}
